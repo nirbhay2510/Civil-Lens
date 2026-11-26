@@ -1,4 +1,4 @@
-# CivilLens: Transparent, Feedback-Tuned Screening of Abusive Online Language
+# Civil-Lens: Transparent, Feedback-Tuned Screening of Abusive Online Language
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python Version" />
