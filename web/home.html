@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>CivilLens — Transparent, Feedback-Tuned Screening</title>
+  <link rel="stylesheet" href="/styles/lumen.css?v=2.0">
+</head>
+<body>
+  <div class="halo-wash-plane" id="haloWashPlane" aria-hidden="true"></div>
+  <div class="grain-shade-veil" aria-hidden="true"></div>
+
+  <div class="shell-frame">
+    <!-- Minimal Top Navbar: Scan Studio + Settings Gear Vertical Table Menu -->
+    <aside class="shell-flank">
+      <div class="nav-left-cluster">
+        <div class="flank-top">
+          <div class="emblem-name">CivilLens</div>
+          <div class="emblem-tagline">Transparent screening, tuned by feedback</div>
+        </div>
+
+        <!-- Hidden capsule retained for console.js compatibility -->
+        <div class="flank-live-capsule" id="flankLiveCapsule"></div>
+
+        <!-- Primary Visible Nav Item: Scan Studio Only -->
+        <ul class="route-tabs route-tabs-primary">
+          <li class="route-entry live" data-target="screen-scan">
+            <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="3" x2="12" y2="7"></line><line x1="12" y1="17" x2="12" y2="21"></line><line x1="3" y1="12" x2="7" y2="12"></line><line x1="17" y1="12" x2="21" y2="12"></line></svg>
+            <span>Scan Studio</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="flank-base">
+        <!-- Settings Gear Dropdown (Rest of Navigation in Vertical Table Manner) -->
+        <div class="settings-menu-wrap" id="settingsMenuWrap">
+          <button type="button" id="settingsGearBtn" class="settings-gear-btn" aria-haspopup="true" aria-expanded="false" aria-label="Open workspace navigation menu" title="Workspace &amp; Settings Menu">
+            <svg class="gear-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+
+          <div class="settings-dropdown-panel" id="settingsDropdownPanel" role="menu">
+            <div class="settings-dropdown-header">
+              <span class="settings-dropdown-title">Console Modules</span>
+              <span style="font-family:var(--face-fixed); font-size:10.5px; color:var(--lead);">10 Views</span>
+            </div>
+            <div class="settings-dropdown-scroll">
+              <table class="nav-vertical-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Module</th>
+                    <th style="text-align:right;">Area</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="route-entry" data-target="screen-summary" role="menuitem">
+                    <td class="nav-tbl-idx">01</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+                      <span>Summary</span>
+                    </td>
+                    <td class="nav-tbl-desc">Overview &amp; Telemetry</td>
+                  </tr>
+                  <tr class="route-entry" data-target="screen-corpora" role="menuitem">
+                    <td class="nav-tbl-idx">03</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                      <span>Corpus Vault</span>
+                    </td>
+                    <td class="nav-tbl-desc">Datasets &amp; Splits</td>
+                  </tr>
+                  <tr class="route-entry" data-target="screen-preprocessing" role="menuitem">
+                    <td class="nav-tbl-idx">04</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                      <span>Prep Bench</span>
+                    </td>
+                    <td class="nav-tbl-desc">Normalization &amp; OCR</td>
+                  </tr>
+                  <tr class="route-entry" data-target="screen-engines" role="menuitem">
+                    <td class="nav-tbl-idx">05</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
+                      <span>Engine Garage</span>
+                    </td>
+                    <td class="nav-tbl-desc">Model Registry</td>
+                  </tr>
+                  <tr class="route-entry" data-target="screen-explainability" role="menuitem">
+                    <td class="nav-tbl-idx">06</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                      <span>Insight Room</span>
+                    </td>
+                    <td class="nav-tbl-desc">XAI &amp; Faithfulness</td>
+                  </tr>
+                  <tr class="route-entry" data-target="screen-tuning" role="menuitem">
+                    <td class="nav-tbl-idx">07</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+                      <span>Payoff Tuning</span>
+                    </td>
+                    <td class="nav-tbl-desc">DPO &amp; Rewards</td>
+                  </tr>
+                  <tr class="route-entry" data-target="screen-equity" role="menuitem">
+                    <td class="nav-tbl-idx">08</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"></path><path d="M3 7l9-4 9 4"></path></svg>
+                      <span>Equity Audit</span>
+                    </td>
+                    <td class="nav-tbl-desc">Fairness &amp; Parity</td>
+                  </tr>
+                  <tr class="route-entry" data-target="screen-trials" role="menuitem">
+                    <td class="nav-tbl-idx">09</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2v7.31L4.1 19.5A2 2 0 0 0 5.8 22h12.4a2 2 0 0 0 1.7-2.5L14 9.31V2"></path></svg>
+                      <span>Trials (1-9)</span>
+                    </td>
+                    <td class="nav-tbl-desc">Benchmark Suite</td>
+                  </tr>
+                  <tr class="route-entry" data-target="screen-briefs" role="menuitem">
+                    <td class="nav-tbl-idx">10</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                      <span>Briefs &amp; Manuscript</span>
+                    </td>
+                    <td class="nav-tbl-desc">Paper &amp; Slides</td>
+                  </tr>
+                  <tr class="route-entry" data-target="screen-prefs" role="menuitem">
+                    <td class="nav-tbl-idx">11</td>
+                    <td class="nav-tbl-name">
+                      <svg class="route-glyph-vec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
+                      <span>Preferences</span>
+                    </td>
+                    <td class="nav-tbl-desc">Weights &amp; Compute</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme Switcher -->
+        <div class="skin-bay-holder" id="skinBay">
+          <button id="skinFlipKey" class="z-key z-skin-flip skin-flip-key" role="switch" aria-checked="false" aria-label="Toggle theme appearance" title="Switch theme" data-slot="theme-toggle" data-label="visible">
+            <svg data-slot="theme-toggle-icon" class="z-skin-flip-glyph" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" focusable="false">
+              <g class="z-skin-spokes" style="transform-origin: 12px 12px;">
+                <path d="M12 1.5V3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M12 1.5V3" transform="rotate(45 12 12)" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M12 1.5V3" transform="rotate(90 12 12)" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M12 1.5V3" transform="rotate(135 12 12)" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M12 1.5V3" transform="rotate(180 12 12)" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M12 1.5V3" transform="rotate(225 12 12)" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M12 1.5V3" transform="rotate(270 12 12)" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M12 1.5V3" transform="rotate(315 12 12)" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </g>
+              <path class="z-skin-core" d="M12 5C15.866 5 19 8.134 19 12C19 15.866 15.866 19 12 19C8.134 19 5 15.866 5 12C5 8.134 8.134 5 12 5Z" fill="currentColor" style="transform-origin: 12px 12px;" />
+            </svg>
+            <span class="z-skin-flip__caption">Light</span>
+          </button>
+        </div>
+
+        <span class="rev-marker" aria-label="Version 1.0.0">v1.0.0</span>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="shell-arena">
+      <header class="masthead">
+        <div class="masthead-state">
+          <span>Active: <strong id="readoutLiveEngine">Multilingual Transformer</strong></span>
+          <span>•</span>
+          <span id="readoutLiveRev" class="chip chip--tint" aria-label="Active Model Version 1.0">v1.0</span>
+        </div>
+        <div>
+          <span style="font-size:12px; color:var(--hue-copy-third);">Formal view: x = {T, V, C} &rarr; y &isin; {0,1}</span>
+        </div>
+      </header>
+
+      <div class="stage-arena2">
+        <!-- 1. OVERVIEW PAGE -->
+        <section id="screen-summary" class="screen-scene">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:var(--gap-3); flex-wrap:wrap; gap:12px;">
+            <div>
+              <h1>CivilLens Overview</h1>
+              <p style="margin-bottom:0;">Explainable AI &amp; Reward-Optimized LLMs for Multilingual, Code-Mixed, and Multimodal Content Moderation.</p>
+            </div>
+            <button class="key key-minor key-xs" onclick="gatherSummaryStats(true)" title="Refresh live telemetry from database" style="flex-shrink:0;">
+              &#x21bb; Refresh Telemetry
+            </button>
+          </div>
+
+          <div class="lattice-4" style="margin-bottom:var(--gap-4);">
+            <div class="readout-crate">
+              <div class="readout-caption">Total Dataset Samples</div>
+              <div class="readout-reading" id="readoutSumSpecimens">--</div>
+              <div class="readout-under" id="readoutSpecimensUnder">Loading corpora...</div>
+            </div>
+            <div class="readout-crate">
+              <div class="readout-caption">Payoff Tuning Runs</div>
+              <div class="readout-reading" id="readoutTuningPasses">1</div>
+              <div class="readout-under" id="readoutTuneUnder">DPO Checkpoint Active</div>
+            </div>
+            <div class="readout-crate">
+              <div class="readout-caption">Human Feedback Audited</div>
+              <div class="readout-reading" id="readoutSumReview">--</div>
+              <div class="readout-under" id="readoutReviewUnder">Audited feedback pairs</div>
+            </div>
+            <div class="readout-crate">
+              <div class="readout-caption">Experiments Completed</div>
+              <div class="readout-reading" id="readoutFinishedTrial">--/9</div>
+              <div class="readout-under" id="readoutTrialUnder">Benchmark suite coverage</div>
+            </div>
+          </div>
+
+          <div class="tile" style="margin-bottom:var(--gap-4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+              <div class="tile-name" style="margin-bottom:0;">Live System Telemetry &amp; Model Engine</div>
+              <span class="chip chip--sound" aria-label="System Health: Optimal">SYSTEM HEALTH: OPTIMAL</span>
+            </div>
+            <div class="lattice-3" style="font-size:13px; margin-bottom:14px;">
+              <div>
+                <span style="color:var(--hue-copy-third); text-transform:uppercase; font-size:11px; font-weight:600;">Active Model:</span><br>
+                <strong id="summaryEngineName">Multilingual Transformer</strong> <span id="summaryEngineRev" class="chip chip--tint" style="font-size:10px;">v1.0</span>
+              </div>
+              <div>
+                <span style="color:var(--hue-copy-third); text-transform:uppercase; font-size:11px; font-weight:600;">Holdout Evaluation:</span><br>
+                <span>Macro F1: <strong id="summaryMacroF1" style="color:var(--hue-good);">--</strong></span> &bull;
+                <span>Acc: <strong id="summaryAccuracy" style="color:var(--hue-good);">--</strong></span>
+              </div>
+              <div>
+                <span style="color:var(--hue-copy-third); text-transform:uppercase; font-size:11px; font-weight:600;">Guardrails &amp; Scoping:</span><br>
+                <span class="chip chip--plain" style="font-size:10px;">Slur Interceptor</span>
+                <span class="chip chip--plain" style="font-size:10px;">Negation Scope</span>
+              </div>
+            </div>
+            <div class="summary-chain-crate">
+              <strong>Academic Architecture Pipeline:</strong> Social Media Input <em>x = {T, V, C}</em> &rarr; Language &amp; Modality Detection &rarr; Modality Preprocessing (Text Normalization, EasyOCR, Context Sanitization) &rarr; Feature Extraction &amp; Cross-Attention Fusion &rarr; Abusive Language Classification &rarr; Grounded XAI Attribution &rarr; Multi-Objective Reward Calculation &rarr; Direct Preference Optimization (DPO).
+            </div>
+            <div class="summary-markers-strip">
+              <span class="summary-markers-caption">Capabilities:</span>
+              <span class="chip chip--plain">English</span>
+              <span class="chip chip--plain">Hindi (Devanagari)</span>
+              <span class="chip chip--plain">Hinglish Code-Mixed</span>
+              <span class="chip chip--plain">Multimodal Memes</span>
+              <span class="chip chip--plain">Direct Preference Optimization</span>
+              <span class="chip chip--plain">Integrated Gradients / Perturbation</span>
+            </div>
+          </div>
+
+          <div class="tile" style="margin-bottom:var(--gap-4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <div class="tile-name" style="margin-bottom:0;">Curated Academic Benchmark Corpora</div>
+              <button class="key key-minor key-xs" onclick="document.querySelector('[data-target=\'screen-corpora\']').click()">Open Corpus Vault &rarr;</button>
+            </div>
+            <div class="ledger-frame">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Corpus / Source</th>
+                    <th>Languages</th>
+                    <th>Modalities</th>
+                    <th>Samples</th>
+                    <th>Class Distribution (Non-Hate / Hate)</th>
+                  </tr>
+                </thead>
+                <tbody id="summaryCorporaLedgerCore">
+                  <tr><td colspan="5" style="text-align:center; padding:16px; color:var(--hue-copy-third);">Loading registered datasets...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="lattice-2">
+            <div class="tile">
+              <div class="tile-name">Core Research Mandates</div>
+              <ul class="summary-duties-roll">
+                <li><strong>Strict Binary Objective:</strong> 0 = Non-Hateful, 1 = Hateful.</li>
+                <li><strong>No Hardcoding Rule:</strong> All metrics, predictions, explanations, and rewards are dynamically computed from SQLite and models.</li>
+                <li><strong>Multilingual Robustness:</strong> Devanagari script and Latin Romanized Hindi slang support without blind machine translation.</li>
+                <li><strong>Multimodal Meme Analysis:</strong> EasyOCR extraction and Cross-Modal Cross-Attention fusion.</li>
+              </ul>
+            </div>
+            <div class="tile">
+              <div class="tile-name">Quick Action Links</div>
+              <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+                <button class="swift-move-key" onclick="document.querySelector('[data-target=\'screen-scan\']').click()"><span>Launch Detection Workspace</span><span>&rarr;</span></button>
+                <button class="swift-move-key" onclick="document.querySelector('[data-target=\'screen-corpora\']').click()"><span>Inspect Registered Datasets</span><span>&rarr;</span></button>
+                <button class="swift-move-key" onclick="document.querySelector('[data-target=\'screen-tuning\']').click()"><span>Review Payoff Tuning Lab</span><span>&rarr;</span></button>
+                <button class="swift-move-key" onclick="document.querySelector('[data-target=\'screen-trials\']').click()"><span>Run Research Trials (1-9)</span><span>&rarr;</span></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. REDESIGNED SCAN STUDIO PAGE (Default Active Screen) -->
+        <section id="screen-scan" class="screen-scene live">
+          <div class="scan-hero-bar">
+            <div>
+              <span class="scan-hero-eyebrow">Interactive XAI Inference</span>
+              <h1>Scan Studio</h1>
+              <p style="margin-bottom:0;">Analyze multilingual text, conversation context, and visual memes with token-level attribution and human-in-the-loop auditing.</p>
+            </div>
+            <div class="scan-hero-badges">
+              <span class="chip chip--tint">EN · HI · Hinglish</span>
+              <span class="chip chip--plain">EasyOCR + Attention</span>
+            </div>
+          </div>
+
+          <div class="scan-atelier-lattice">
+            <!-- Left Column: Input Composer -->
+            <div class="scan-field-lane">
+              <div class="scan-composer-card">
+                <div class="tile-name" style="margin-bottom:16px;">
+                  <span>Input Modalities</span>
+                  <span style="font-family:var(--face-fixed); font-size:11.5px; color:var(--quiet); font-weight:500;">x = {T, V, C}</span>
+                </div>
+
+                <!-- Academic Test Presets -->
+                <div class="scan-presets-box">
+                  <span class="entry-caption" style="margin-bottom:0; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--quiet);">Quick Academic Presets</span>
+                  <div class="quickset-strip">
+                    <button class="quickset-key" data-preset="hate_en">Hate English</button>
+                    <button class="quickset-key" data-preset="sarcasm_counter">Sarcasm Counterspeech</button>
+                    <button class="quickset-key" data-preset="hinglish_abuse">Hinglish Abuse</button>
+                    <button class="quickset-key" data-preset="hinglish_civil">Hinglish Civil</button>
+                    <button class="quickset-key" data-preset="devanagari_hate">Devanagari Hate</button>
+                    <button class="quickset-key" data-preset="devanagari_civil">Devanagari Civil</button>
+                    <button class="quickset-key" data-preset="quotation_critique">Quotation Critique</button>
+                  </div>
+                </div>
+
+                <!-- 1. Text Content (T) -->
+                <div class="entry-bundle folio-pane-frame">
+                  <label class="scan-section-label" for="scanCopyField">
+                    <span><span class="scan-step-pill">1</span>Text Content (T) — English, Hindi, or Code-Mixed Hinglish</span>
+                  </label>
+                  <textarea id="scanCopyField" class="entry-dial folio-writer" placeholder="Paste or type text to analyze..."></textarea>
+                  <div class="folio-spot-thread"></div>
+                  <div class="glyph-tallier-band">
+                    <span class="glyph-tally">Press Ctrl + Enter to run</span>
+                    <span class="glyph-tally" id="scanGlyphTally">0 characters</span>
+                  </div>
+                </div>
+
+                <!-- 2. Context & Model Architecture -->
+                <div class="scan-undercontrols-strip">
+                  <div class="entry-bundle" style="margin-bottom:0;">
+                    <label class="scan-section-label" for="scanThreadField">
+                      <span><span class="scan-step-pill">2</span>Contextual Info (C)</span>
+                    </label>
+                    <input type="text" id="scanThreadField" class="entry-dial" placeholder="e.g. Previous turn in debate, topic tags...">
+                  </div>
+                  <div class="entry-bundle" style="margin-bottom:0;">
+                    <label class="scan-section-label" for="scanEngineChooser">
+                      <span>Model Architecture</span>
+                    </label>
+                    <select id="scanEngineChooser" class="entry-dial">
+                      <option value="polyglot-attention-v1">Multilingual Code-Mixed Transformer (Default)</option>
+                      <option value="classical-tfidf-svm">Classical TF-IDF + Linear Classifier</option>
+                      <option value="llm-structured-reasoner-v1">LLM Structured Analysis Reasoner</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- 3. Visual Information (V) -->
+                <div class="entry-bundle" style="margin-bottom:0;">
+                  <label class="scan-section-label" for="scanPicField">
+                    <span><span class="scan-step-pill">3</span>Visual Information (V) — Meme / Image (EasyOCR + Visual CNN)</span>
+                  </label>
+                  <div class="upload-dropzone">
+                    <input type="file" id="scanPicField" accept="image/*">
+                    <button type="button" id="keyPurgePic" class="key key-minor key-xs" style="display:none;">Clear Image</button>
+                  </div>
+                  <div id="picPeekFrame" style="display:none; margin-top:12px; align-items:center; gap:14px; padding:12px; background:var(--slab-mellow); border-radius:var(--curve-xs); border:1px solid var(--fine);">
+                    <img id="picPeek" src="" alt="Meme preview" style="max-height:120px; max-width:180px; border-radius:var(--curve-tiny); border:1px solid var(--ledge); object-fit:contain; background:var(--slab);">
+                    <div style="font-size:12px; color:var(--quiet); line-height:1.5;">
+                      <span id="picStateChip" class="chip chip--tint" aria-label="Image Status: Image Selected">Image Selected</span>
+                      <div style="margin-top:6px; font-size:11.5px; color:var(--quiet);">EasyOCR will automatically extract embedded visual text and fuse it with the classifier.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Primary Action Bar -->
+                <div class="scan-action-bar">
+                  <button id="keyFireScan" class="key key-lead" type="button" style="flex:1; min-width:210px;">
+                    Execute Detection Pipeline &rarr;
+                  </button>
+                  <span style="font-family:var(--face-fixed); font-size:11.5px; color:var(--quiet);">Shortcut: Ctrl + Enter</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Sticky Results -->
+            <div class="scan-outcome-lane">
+              <div id="scanFaultMemo" class="scan-fault" style="display:none;"></div>
+
+              <div id="scanSweeperRig" class="sweeper-rig-pane" style="display:none;">
+                <div class="sweeper-brush-thread" id="sweeperBrushThread"></div>
+                <div class="sweeper-copy-peek" id="sweeperCopyPeek">Scanning multimodal features...</div>
+                <div class="sweeper-vitals" id="sweeperVitals">
+                  <div class="sweeper-beat"></div>
+                  <span>SCANNING MULTIMODAL EMBEDDINGS... / INTEGRATED GRADIENTS</span>
+                </div>
+              </div>
+
+              <div id="scanGhosting" class="scan-ghosting" style="display:none;">
+                <div class="ghosting-thread" style="width:55%;"></div>
+                <div class="ghosting-thread" style="width:90%;"></div>
+                <div class="ghosting-thread" style="width:75%;"></div>
+                <div class="ghosting-thread" style="width:40%;"></div>
+              </div>
+
+              <!-- Pleasant Idle State (hidden automatically once results appear) -->
+              <div id="scanEmptyState" class="scan-empty-placeholder">
+                <div class="scan-empty-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="3" x2="12" y2="7"></line><line x1="12" y1="17" x2="12" y2="21"></line><line x1="3" y1="12" x2="7" y2="12"></line><line x1="17" y1="12" x2="21" y2="12"></line></svg>
+                </div>
+                <h3 style="margin-bottom:6px;">Ready to Analyze</h3>
+                <p style="font-size:13px; margin-bottom:0;">Choose a preset or enter text/image on the left, then click <strong>Execute Detection Pipeline</strong> to inspect verdicts, token attributions, and grounded explanations.</p>
+              </div>
+
+              <!-- Detection Result Card -->
+              <div id="scanOutcomeTile" class="tile-raised" style="display:none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px; border-bottom:1px solid var(--fine); padding-bottom:12px;">
+                  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                    <span id="outCaptionChip" class="chip chip--alert" aria-label="Verdict: Hateful (1)">HATEFUL&nbsp;(1)</span>
+                    <span style="font-family:var(--face-fixed); font-size:13px; color:var(--graphite);">Confidence: <strong id="outCertainty">95.4%</strong></span>
+                  </div>
+                  <div style="font-family:var(--face-fixed); font-size:11px; color:var(--quiet);">
+                    Lang: <strong id="outTongue">EN</strong> &bull; Mod: <strong id="outChannels">TEXT</strong>
+                  </div>
+                </div>
+
+                <div style="font-family:var(--face-fixed); font-size:11.5px; color:var(--quiet); margin-bottom:14px;">
+                  Executed by: <span id="outEngineRev">polyglot-attention-v1</span> &bull; Faithfulness: <strong id="outFidelity">88.5%</strong>
+                </div>
+
+                <table class="ruling-probe-ledger">
+                  <thead>
+                    <tr>
+                      <th>Pipeline Layer</th>
+                      <th>Verdict</th>
+                      <th>Output</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Neural Classifier</td>
+                      <td id="probeEngineRuling"><span class="chip chip--plain">Model Verdict</span></td>
+                      <td id="probeEngineOutput" class="fixed-lane">Active</td>
+                    </tr>
+                    <tr>
+                      <td>Rule-Based Grounding</td>
+                      <td id="probeLedgeRuling"><span class="chip chip--plain">Grounding Check</span></td>
+                      <td id="probeLedgeOutput" class="fixed-lane">Verified</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div style="margin-bottom:16px;">
+                  <div class="tile-name" style="font-size:14px; margin-bottom:6px;">
+                    <span>Token-Level Attribution</span>
+                    <button id="keyFlipBarePieces" class="key key-minor key-xs" type="button">View Raw Tokens</button>
+                  </div>
+                  <div id="outEmbeddedBlame" class="marked-copy-pane"></div>
+                  <div id="outBlameApproach" class="blame-approach-marker">Attribution Method: Integrated Gradients (Raw Embedding Gradients)</div>
+                  <div id="outPieceFlow" class="piece-flow" style="display:none;"></div>
+                </div>
+
+                <div class="lattice-2" style="margin-bottom:14px;">
+                  <div>
+                    <span class="entry-caption">OCR Modality Evidence</span>
+                    <div id="outGlyphsProof" style="font-size:12px; font-family:var(--face-fixed); color:var(--quiet); border:1px solid var(--fine); background:var(--slab-mellow); padding:9px 12px; border-radius:var(--curve-tiny);">None</div>
+                  </div>
+                  <div>
+                    <span class="entry-caption">Contextual Modality Evidence</span>
+                    <div id="outThreadProof" style="font-size:12px; font-family:var(--face-fixed); color:var(--quiet); border:1px solid var(--fine); background:var(--slab-mellow); padding:9px 12px; border-radius:var(--curve-tiny);">None</div>
+                  </div>
+                </div>
+
+                <div class="gutter-aside-tile">
+                  <div class="gutter-aside-caption">Synthesized Grounded Explanation</div>
+                  <pre id="outOrganicNarration" class="typist-copy"></pre>
+                </div>
+
+                <!-- Human Feedback Form -->
+                <div style="border-top:1px solid var(--fine); padding-top:16px; margin-top:14px;">
+                  <div class="tile-name" style="font-size:14px; margin-bottom:4px;">Human Feedback &amp; Reward Collection</div>
+                  <p style="font-size:12px; color:var(--quiet); margin-bottom:12px;">Submit feedback to evaluate the model and supply data to the Payoff Tuning engine.</p>
+
+                  <div class="lattice-3" style="margin-bottom:10px;">
+                    <div class="entry-bundle" style="margin-bottom:6px;">
+                      <label class="entry-caption" for="reviewCorrectChooser">Accurate?</label>
+                      <select id="reviewCorrectChooser" class="entry-dial" style="font-size:12px; padding:7px 9px;">
+                        <option value="true">Yes, Correct</option>
+                        <option value="false">No, Incorrect</option>
+                      </select>
+                    </div>
+                    <div class="entry-bundle" style="margin-bottom:6px;">
+                      <label class="entry-caption" for="reviewCorrectCaption">Corrected Label</label>
+                      <select id="reviewCorrectCaption" class="entry-dial" style="font-size:12px; padding:7px 9px;">
+                        <option value="">No Correction</option>
+                        <option value="0">0 — Non-Hateful</option>
+                        <option value="1">1 — Hateful</option>
+                      </select>
+                    </div>
+                    <div class="entry-bundle" style="margin-bottom:6px;">
+                      <label class="entry-caption" for="reviewStars">Quality (1-5)</label>
+                      <select id="reviewStars" class="entry-dial" style="font-size:12px; padding:7px 9px;">
+                        <option value="5">5 — Clear &amp; Grounded</option>
+                        <option value="4">4 — Good</option>
+                        <option value="3">3 — Moderate</option>
+                        <option value="2">2 — Ambiguous</option>
+                        <option value="1">1 — Poor</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="entry-bundle" style="margin-bottom:12px;">
+                    <label class="entry-caption" for="reviewComment">Reviewer Notes</label>
+                    <input type="text" id="reviewComment" class="entry-dial" placeholder="Optional comments on sarcasm, slang, or context...">
+                  </div>
+
+                  <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                    <button id="keySendReview" class="key key-minor key-xs" type="button">Submit Audited Feedback</button>
+                    <span id="reviewStateMemo" style="font-size:11.5px; font-family:var(--face-fixed); color:var(--lead);"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. DATASETS PAGE -->
+        <section id="screen-corpora" class="screen-scene">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:var(--gap-3); flex-wrap:wrap; gap:12px;">
+            <div>
+              <h1>Corpus Vault</h1>
+              <p style="margin-bottom:0;">Universal dataset adapters, schema validation, class balance verification, and leakage-safe splits.</p>
+            </div>
+            <button class="key key-minor key-xs" onclick="gatherCorpora()" title="Refresh datasets list">&#x21bb; Refresh Corpora</button>
+          </div>
+
+          <div class="lattice-4" style="margin-bottom:var(--gap-4);">
+            <div class="readout-crate"><div class="readout-caption">Registered Corpora</div><div class="readout-reading" id="dsReadoutSumTally">4</div><div class="readout-under">HASOC · HateXplain · Subtle · Memes</div></div>
+            <div class="readout-crate"><div class="readout-caption">Total Curated Samples</div><div class="readout-reading" id="dsReadoutSumSpecimens">1,310</div><div class="readout-under">Strict Binary Ground Truth</div></div>
+            <div class="readout-crate"><div class="readout-caption">Modalities Covered</div><div class="readout-reading" style="font-size:22px;">Text + OCR</div><div class="readout-under">Images, Saliency &amp; Context</div></div>
+            <div class="readout-crate"><div class="readout-caption">Validation Engine</div><div class="readout-reading" style="color:var(--hue-good);">100%</div><div class="readout-under">Universal Schema Validated</div></div>
+          </div>
+
+          <div class="tile" style="margin-bottom:var(--gap-4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+              <div class="tile-name" style="margin-bottom:0;">Registered Research Datasets</div>
+              <span class="chip chip--plain">LEAKAGE-SAFE STRATIFIED SPLITS</span>
+            </div>
+            <div class="ledger-frame">
+              <table id="corpusLedger">
+                <thead>
+                  <tr>
+                    <th>Corpus / Source</th><th>Identifier</th><th>Samples</th><th>Languages</th><th>Modalities</th><th>Class Balance (Non-Hate / Hate)</th><th style="width:140px;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="corpusExamineSheet" class="tile-raised" style="display:none; margin-bottom:var(--gap-4);">
+            <div class="corpus-examine-frame">
+              <div class="examine-top">
+                <div>
+                  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <h3 id="examineCorpusName" style="margin-bottom:0;">Dataset Inspection</h3>
+                    <code id="examineCorpusKey2" style="font-size:12px; font-weight:600;"></code>
+                  </div>
+                  <div id="examineCorpusFacts" style="font-size:12px; color:var(--hue-copy-minor); margin-top:4px;"></div>
+                </div>
+                <button class="key key-minor key-xs" onclick="closeDatasetInspector()">Close Inspector</button>
+              </div>
+              <div class="lattice-4" id="examineFigureBand">
+                <div class="readout-crate" style="padding:12px;"><div class="readout-caption">Total Corpus Records</div><div class="readout-reading" id="examineSumSpecimens" style="font-size:20px;">--</div></div>
+                <div class="readout-crate" style="padding:12px;"><div class="readout-caption">Non-Hateful (0)</div><div class="readout-reading" id="examineNonAbuseTally" style="font-size:20px; color:var(--hue-good);">--</div></div>
+                <div class="readout-crate" style="padding:12px;"><div class="readout-caption">Hateful (1)</div><div class="readout-reading" id="examineAbuseTally" style="font-size:20px; color:var(--hue-fault);">--</div></div>
+                <div class="readout-crate" style="padding:12px;"><div class="readout-caption">Filtered Results</div><div class="readout-reading" id="examineKeptTally" style="font-size:20px;">--</div></div>
+              </div>
+              <div class="examine-toolrow">
+                <select id="examineSiftChooser" class="examine-chooser" style="width:auto;" onchange="onInspectFilterChange()">
+                  <option value="all">All Classes (0 &amp; 1)</option>
+                  <option value="0">Non-Hateful (0) Only</option>
+                  <option value="1">Hateful (1) Only</option>
+                </select>
+                <input type="text" id="examineSeekField" class="examine-seek-field" style="flex:1; min-width:220px;" placeholder="Search keywords, OCR text, ID, or category..." oninput="onInspectSearchInput()">
+                <select id="examineCapChooser" class="examine-chooser" style="width:auto;" onchange="onInspectLimitChange()">
+                  <option value="15">15 samples</option>
+                  <option value="30" selected>30 samples</option>
+                  <option value="50">50 samples</option>
+                  <option value="100">100 samples</option>
+                </select>
+                <button class="key key-minor key-xs" onclick="resetInspectFilters()">Reset</button>
+              </div>
+              <div class="ledger-frame" style="max-height: 480px; overflow-y:auto;">
+                <table>
+                  <thead>
+                    <tr><th style="width:45px;">#</th><th style="width:110px;">ID</th><th>Content &amp; Modalities</th><th style="width:75px;">Lang</th><th style="min-width:145px;">Ground Truth</th><th style="width:120px;">Actions</th></tr>
+                  </thead>
+                  <tbody id="examineSpecimensLedgerCore">
+                    <tr><td colspan="6" style="text-align:center; padding:20px; color:var(--hue-copy-third);">Loading samples...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div id="visualSpotlightSheet" class="sheet-spotlight" style="display:none;" onclick="if(event.target === this) closeMemeLightbox()">
+            <div class="sheet-spotlight-stage">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <div class="tile-name" style="margin-bottom:0;">Meme Inspection</div>
+                <button class="key key-minor key-xs" onclick="closeMemeLightbox()">Close</button>
+              </div>
+              <div style="text-align:center; margin-bottom:12px; background:var(--hue-slab-lifted); padding:8px; border-radius:var(--curve-xs); border:1px solid var(--hue-edge-faint);">
+                <img id="spotlightImg" src="" alt="Meme Preview" style="max-width:100%; max-height:280px; object-fit:contain;">
+              </div>
+              <div style="font-size:13px; margin-bottom:8px;"><strong>Post Caption:</strong> <span id="spotlightCaption"></span></div>
+              <div style="font-size:13px; margin-bottom:8px;"><strong>EasyOCR Extracted:</strong> <code id="spotlightGlyphs"></code></div>
+              <div style="font-size:13px; margin-bottom:14px;"><strong>Ground Truth:</strong> <span id="spotlightCaptionChip" class="chip chip--plain"></span></div>
+              <div style="display:flex; justify-content:flex-end; gap:8px;">
+                <button id="spotlightTestKey" class="key key-lead key-xs">Test in Scan Studio &rarr;</button>
+                <button class="key key-minor key-xs" onclick="closeMemeLightbox()">Close</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. PREPROCESSING PAGE -->
+        <section id="screen-preprocessing" class="screen-scene">
+          <h1>Prep Bench</h1>
+          <p>Inspect the actual transformation stages for text, multilingual code-mixing, memes, and context.</p>
+          <div class="lattice-2">
+            <div class="tile">
+              <div class="tile-name">Text &amp; Script Normalization</div>
+              <p style="font-size:13px;">Applies Unicode NFKC normalization, URL neutralization ([URL]), mention anonymization ([MENTION]), camelCase hashtag decomposition, and Devanagari script integrity checking.</p>
+              <pre>Raw: "Inko maro! #DeshBhakti https://t.co/xyz"
+Normalized: "Inko maro ! Desh Bhakti [URL]"</pre>
+            </div>
+            <div class="tile">
+              <div class="tile-name">Code-Mixed Hinglish Detection</div>
+              <p style="font-size:13px;">Detects Latin vs Devanagari unicode characters and matches phonetic Romanized Hindi lexicon (e.g. <code>kamine</code>, <code>bhai</code>, <code>desh</code>, <code>aukaat</code>) to reliably identify Hinglish code-mixing without English translation loss.</p>
+            </div>
+          </div>
+          <div class="lattice-2">
+            <div class="tile">
+              <div class="tile-name">Visual &amp; EasyOCR Extraction</div>
+              <p style="font-size:13px;">Loads meme graphics, resizes to [224, 224], extracts embedded text and spatial bounding boxes via EasyOCR, and normalizes pixel tensors for cross-modal cross-attention.</p>
+            </div>
+            <div class="tile">
+              <div class="tile-name">Context Sanitization</div>
+              <p style="font-size:13px;">Sanitizes thread history and masks protected demographic references ([DEMOGRAPHIC_NEUTRAL]) to prevent models from learning identity-term biases.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. MODEL REGISTRY PAGE -->
+        <section id="screen-engines" class="screen-scene">
+          <h1>Engine Garage</h1>
+          <p>Architectures, trained checkpoints, live performance metrics, and active model management.</p>
+          <div class="tile">
+            <div class="tile-name">Available Model Architectures</div>
+            <div class="ledger-frame">
+              <table id="enginesLedger">
+                <thead><tr><th>Model Name</th><th>Identifier</th><th>Version</th><th>Type</th><th>Accuracy / Macro F1</th><th>Status</th><th>Action</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tile">
+            <div class="tile-name">Model Version Audit Trail (Rollback Supported)</div>
+            <div class="ledger-frame">
+              <table id="versionsLedger">
+                <thead><tr><th>Version ID</th><th>Optimization Method</th><th>Reward Score</th><th>Macro F1</th><th>Created At</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. EXPLAINABILITY STUDIO PAGE -->
+        <section id="screen-explainability" class="screen-scene">
+          <h1>Insight Room</h1>
+          <p>Grounded token-level attribution, visual bounding saliency, and AOPC faithfulness validation.</p>
+          <div class="tile">
+            <div class="tile-name">Methodology: Grounded Perturbation &amp; Integrated Gradients</div>
+            <p style="font-size:13px;">Traditional attention maps frequently fail faithfulness tests. Our engine implements Leave-One-Out (LIME-style) perturbation attribution and verifies explanation faithfulness by measuring confidence drop (&Delta;f(x)) when top-k attributed tokens are ablated.</p>
+            <pre>Faithfulness Score Formula: AOPC_Drop = |f(x) - f(x \ top_k)| / f(x)</pre>
+          </div>
+          <div class="lattice-2">
+            <div class="tile">
+              <div class="tile-name">Positive Evidence Tokens</div>
+              <p style="font-size:13px;">Tokens that elevate hateful logit probability (slurs, dehumanization, violent imperatives).</p>
+              <div class="chip-bundle"><span class="chip chip--alert">vermin [+0.42]</span><span class="chip chip--alert">exterminate [+0.38]</span><span class="chip chip--alert">kutto [+0.35]</span></div>
+            </div>
+            <div class="tile">
+              <div class="tile-name">Negative Evidence Tokens</div>
+              <p style="font-size:13px;">Tokens that reduce hateful logit probability (counterspeech, civil terms, quotation critiques).</p>
+              <div class="chip-bundle"><span class="chip chip--sound">virodh [-0.31]</span><span class="chip chip--sound">equality [-0.29]</span><span class="chip chip--sound">peace [-0.25]</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. REWARD OPTIMIZATION PAGE -->
+        <section id="screen-tuning" class="screen-scene">
+          <h1>Payoff Tuning Lab</h1>
+          <p>Execute feedback-driven Direct Preference Optimization (DPO) and simulate multi-objective reward vectors in real-time.</p>
+          <div class="lattice-4" style="margin-bottom:var(--gap-4);">
+            <div class="readout-crate"><div class="readout-caption">Total Preference Pairs</div><div class="readout-reading" id="tuneSumDuos">--</div></div>
+            <div class="readout-crate"><div class="readout-caption">Active Alignment Method</div><div class="readout-reading" id="tuneLiveApproach" style="font-size:18px;">DPO</div></div>
+            <div class="readout-crate"><div class="readout-caption">Mean Episode Reward</div><div class="readout-reading" id="tuneAveragePayoff" style="color:var(--hue-good);">--</div></div>
+            <div class="readout-crate"><div class="readout-caption">Optimization Policy Status</div><div class="readout-reading" id="tuneStanceState" style="font-size:18px; color:var(--hue-lead);">v2.331 Active</div></div>
+          </div>
+
+          <div class="tile-raised" style="margin-bottom:var(--gap-4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:14px; gap:8px;">
+              <div>
+                <div class="tile-name" style="margin-bottom:2px;">Multi-Objective Reward Formulation &amp; Live Simulator</div>
+                <div style="font-size:12px; color:var(--hue-copy-minor); font-family:var(--face-fixed);">R(x, y, e, f) = &alpha;&middot;R_cls + &beta;&middot;R_exp + &gamma;&middot;R_ctx + &delta;&middot;R_fb &minus; &lambda;_err&middot;R_err</div>
+              </div>
+              <div style="display:flex; gap:6px;">
+                <button class="key key-minor key-xs" onclick="setOptPresetWeights('default')">Balanced ACL</button>
+                <button class="key key-minor key-xs" onclick="setOptPresetWeights('xai')">High XAI (&beta;=0.40)</button>
+                <button class="key key-minor key-xs" onclick="setOptPresetWeights('strict')">Strict Penalty (&lambda;=0.80)</button>
+              </div>
+            </div>
+
+            <div class="lattice-2">
+              <div class="tile" style="margin-bottom:0;">
+                <div style="font-size:13px; font-weight:700; margin-bottom:12px;">Objective Weight Configuration</div>
+                <div class="dragger-bundle"><div class="dragger-top"><span>&alpha; (Classification Alignment):</span><span class="dragger-reading" id="amtMixA1">0.35</span></div><input type="range" class="custom-span" id="draggerA1" min="0.0" max="1.0" step="0.05" value="0.35" oninput="onOptWeightChange()"></div>
+                <div class="dragger-bundle"><div class="dragger-top"><span>&beta; (Faithful XAI Attribution):</span><span class="dragger-reading" id="amtMixB1">0.25</span></div><input type="range" class="custom-span" id="draggerB1" min="0.0" max="1.0" step="0.05" value="0.25" oninput="onOptWeightChange()"></div>
+                <div class="dragger-bundle"><div class="dragger-top"><span>&gamma; (Context Disambiguation):</span><span class="dragger-reading" id="amtMixG1">0.15</span></div><input type="range" class="custom-span" id="draggerG1" min="0.0" max="1.0" step="0.05" value="0.15" oninput="onOptWeightChange()"></div>
+                <div class="dragger-bundle"><div class="dragger-top"><span>&delta; (Human Feedback Alignment):</span><span class="dragger-reading" id="amtMixD1">0.25</span></div><input type="range" class="custom-span" id="draggerD1" min="0.0" max="1.0" step="0.05" value="0.25" oninput="onOptWeightChange()"></div>
+                <div class="dragger-bundle"><div class="dragger-top"><span>&lambda;_err (Overconfident Error Penalty):</span><span class="dragger-reading" id="amtMixLambda" style="color:var(--hue-fault);">0.50</span></div><input type="range" class="custom-span" id="draggerLambda" min="0.0" max="1.0" step="0.05" value="0.50" oninput="onOptWeightChange()"></div>
+              </div>
+
+              <div class="tile" style="margin-bottom:0;">
+                <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Live Sample Reward Simulation</div>
+                <div style="margin-bottom:10px;">
+                  <div class="recipe-capsule-bundle">
+                    <button type="button" class="recipe-capsule live" onclick="loadSimScenario('true_positive', this)">True Positive</button>
+                    <button type="button" class="recipe-capsule" onclick="loadSimScenario('false_alarm', this)">False Alarm</button>
+                    <button type="button" class="recipe-capsule" onclick="loadSimScenario('context_hate', this)">Implicit Context Hate</button>
+                    <button type="button" class="recipe-capsule" onclick="loadSimScenario('civil_critique', this)">Civil Counterspeech</button>
+                  </div>
+                </div>
+                <div class="lattice-2" style="gap:10px; margin-bottom:8px;">
+                  <div>
+                    <label class="entry-caption" style="font-size:11px;">Model Confidence:</label>
+                    <div style="display:flex; align-items:center; gap:6px;"><input type="range" class="custom-span" id="previewCertainty" min="0.50" max="1.0" step="0.01" value="0.95" oninput="runLiveRewardSimulation()"><span id="previewCertaintyAmt" style="font-size:11px; font-family:var(--face-fixed);">95%</span></div>
+                  </div>
+                  <div>
+                    <label class="entry-caption" style="font-size:11px;">XAI Faithfulness (AOPC):</label>
+                    <div style="display:flex; align-items:center; gap:6px;"><input type="range" class="custom-span" id="previewFidelity" min="0.0" max="1.0" step="0.05" value="0.80" oninput="runLiveRewardSimulation()"><span id="previewFidelityAmt" style="font-size:11px; font-family:var(--face-fixed);">0.80</span></div>
+                  </div>
+                </div>
+                <div class="lattice-2" style="gap:10px; margin-bottom:12px;">
+                  <div>
+                    <label class="entry-caption" style="font-size:11px;">Human Agreement:</label>
+                    <select id="previewAccord" class="entry-dial" style="font-size:12px; padding:5px 8px;" onchange="runLiveRewardSimulation()">
+                      <option value="correct">Agreed (Correct)</option>
+                      <option value="incorrect">Disagreed (Error)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="entry-caption" style="font-size:11px;">Context &amp; Feedback:</label>
+                    <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
+                      <label style="font-size:11px; display:inline-flex; align-items:center; gap:4px;"><input type="checkbox" id="previewThreadUsed" checked onchange="runLiveRewardSimulation()"> Context</label>
+                      <select id="previewStars" class="entry-dial" style="font-size:11px; padding:3px 6px; width:auto;" onchange="runLiveRewardSimulation()">
+                        <option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="payoff-split-tile">
+                  <div class="payoff-gauge-strip"><span class="payoff-gauge-caption">R_cls (Accuracy):</span><div class="payoff-gauge-channel"><div id="gaugeCx" class="payoff-gauge-level" style="width:100%; background:var(--lead);"></div></div><span id="gradeCx" class="payoff-gauge-amt">+0.35</span></div>
+                  <div class="payoff-gauge-strip"><span class="payoff-gauge-caption">R_exp (Faithfulness):</span><div class="payoff-gauge-channel"><div id="gaugeTrial" class="payoff-gauge-level" style="width:80%; background:var(--lead);"></div></div><span id="gradeTrial" class="payoff-gauge-amt">+0.20</span></div>
+                  <div class="payoff-gauge-strip"><span class="payoff-gauge-caption">R_ctx (Context):</span><div class="payoff-gauge-channel"><div id="gaugeThr" class="payoff-gauge-level" style="width:85%; background:var(--lead);"></div></div><span id="gradeThr" class="payoff-gauge-amt">+0.13</span></div>
+                  <div class="payoff-gauge-strip"><span class="payoff-gauge-caption">R_fb (Feedback):</span><div class="payoff-gauge-channel"><div id="gaugeRv" class="payoff-gauge-level" style="width:100%; background:var(--lead);"></div></div><span id="gradeRv" class="payoff-gauge-amt">+0.25</span></div>
+                  <div class="payoff-gauge-strip"><span class="payoff-gauge-caption">R_err (Penalty):</span><div class="payoff-gauge-channel"><div id="gaugeFlt" class="payoff-gauge-level" style="width:0%; background:var(--beacon);"></div></div><span id="gradeFlt" class="payoff-gauge-amt" style="color:var(--beacon);">-0.00</span></div>
+                  <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--fine); padding-top:8px; margin-top:6px;">
+                    <span style="font-weight:700; font-size:13px;">Net Composite Reward:</span>
+                    <span id="previewSumPayoffChip" class="chip chip--tint">+0.9300</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lattice-2" style="margin-bottom:var(--gap-4);">
+            <div class="tile-raised">
+              <div class="tile-name">Trigger DPO Optimization Cycle</div>
+              <p style="font-size:12px; color:var(--hue-copy-minor); margin-bottom:12px;">Trains a policy model directly against preference pairs to maximize reward without unstable RL actor-critic loops.</p>
+              <div class="lattice-2">
+                <div class="entry-bundle">
+                  <label class="entry-caption">Optimization Method</label>
+                  <select id="tuneApproachChooser" class="entry-dial"><option value="DPO">Direct Preference Optimization (DPO)</option><option value="Preference-SFT">Preference Supervised Fine-Tuning</option></select>
+                </div>
+                <div class="entry-bundle">
+                  <label class="entry-caption">Training Epochs</label>
+                  <input type="number" id="tuneRounds" class="entry-dial" value="2" min="1" max="10">
+                </div>
+              </div>
+              <button id="keyKickTune" class="key key-lead" style="width:100%;">Execute Optimization Cycle &rarr;</button>
+              <div id="tuneLaunchHeads_up" style="display:none; font-size:12px; margin-top:8px; padding:8px 12px; background:var(--slab-mellow); border-left:3px solid var(--lead);"></div>
+            </div>
+
+            <div class="tile">
+              <div class="tile-name">DPO Loss Trajectory &amp; Convergence</div>
+              <div class="lattice-2" style="gap:10px; margin-bottom:12px;">
+                <div class="penalty-tile">
+                  <div style="font-size:11px; color:var(--hue-copy-minor);">EPOCH 1 DPO LOSS</div>
+                  <div id="pairwisePenaltyPhase1" style="font-size:20px; font-weight:700; font-family:var(--face-fixed); color:var(--hue-lead);">-13.1404</div>
+                  <div style="font-size:11px; color:var(--hue-copy-minor); margin-top:2px;">Initial Implicit Reward Gradient</div>
+                </div>
+                <div class="penalty-tile" style="border-left-color:var(--hue-good);">
+                  <div style="font-size:11px; color:var(--hue-copy-minor);">EPOCH 2 DPO LOSS</div>
+                  <div id="pairwisePenaltyPhase2" style="font-size:20px; font-weight:700; font-family:var(--face-fixed); color:var(--hue-good);">-17.9690</div>
+                  <div style="font-size:11px; color:var(--hue-good); margin-top:2px;">&Delta; -4.8286 (Loss Reduced)</div>
+                </div>
+              </div>
+              <div style="font-size:12px; color:var(--hue-copy-minor); line-height:1.4;">
+                DPO objective implicitly solves the optimal RL reward maximization problem:
+                <code style="font-size:11px; display:block; margin-top:4px;">&nabla;&theta; L_DPO = -&Eacute;[&sigma;(&beta; log(&pi;&theta;(y_w|x)/&pi;_ref(y_w|x)) - &beta; log(&pi;&theta;(y_l|x)/&pi;_ref(y_l|x)))]</code>
+              </div>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="tile-name">Optimization Run History</div>
+            <div class="ledger-frame"><table id="tunePassesLedger"><thead><tr><th>Run Identifier</th><th>Method</th><th>Samples / Pairs</th><th>Macro F1 (Before &rarr; After)</th><th>Status</th><th>Executed At</th></tr></thead><tbody></tbody></table></div>
+          </div>
+          <div class="tile">
+            <div class="tile-name">Recent Instance Rewards (Audit Log)</div>
+            <div class="ledger-frame"><table id="freshPayoffsLedger"><thead><tr><th style="width:110px;">ID</th><th>R_cls</th><th>R_exp</th><th>R_ctx</th><th>R_fb</th><th>R_err (Penalty)</th><th>Total Reward</th><th>Audit Date</th></tr></thead><tbody></tbody></table></div>
+          </div>
+        </section>
+
+        <!-- 8. BIAS & FAIRNESS PAGE -->
+        <section id="screen-equity" class="screen-scene">
+          <h1>Equity Audit Desk</h1>
+          <p>Disaggregated group metrics, Equalized Odds disparities, and counterfactual demographic invariance auditing.</p>
+          <div class="lattice-4" style="margin-bottom:var(--gap-4);">
+            <div class="readout-crate"><div class="readout-caption">Equalized Odds Disparity Gap</div><div class="readout-reading" id="equityChanceSpread" style="color:var(--hue-good);">0.00%</div></div>
+            <div class="readout-crate"><div class="readout-caption">Fairness Standard Status</div><div style="margin-top:6px;"><span id="equityStateChip" class="chip chip--sound">EQUITABLE PARITY MET</span></div></div>
+            <div class="readout-crate"><div class="readout-caption">Demographic Invariance Score</div><div class="readout-reading" id="equitySteadinessGrade" style="color:var(--hue-good);">100.0%</div></div>
+            <div class="readout-crate"><div class="readout-caption">Linguistic Subgroups Audited</div><div class="readout-reading" id="equityCohortsTally">3 Subgroups</div></div>
+          </div>
+
+          <div class="tile-raised" style="margin-bottom:var(--gap-4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:12px; gap:8px;">
+              <div>
+                <div class="tile-name" style="margin-bottom:2px;">Counterfactual Demographic Invariance Stress-Tester</div>
+                <div style="font-size:12px; color:var(--hue-copy-minor);">Evaluates an input template across 8 protected demographic identities to verify zero bias variance (&Delta; = 0.00%).</div>
+              </div>
+              <div id="pokeRulingCapsule"><span class="chip chip--sound">FAIR &amp; DEMOGRAPHIC-INVARIANT</span></div>
+            </div>
+            <div style="margin-bottom:12px;">
+              <div class="recipe-capsule-bundle">
+                <button type="button" class="recipe-capsule live" onclick="selectProbeTemplate(0, this)">Benevolent</button>
+                <button type="button" class="recipe-capsule" onclick="selectProbeTemplate(1, this)">Prosocial</button>
+                <button type="button" class="recipe-capsule" onclick="selectProbeTemplate(2, this)">Academic</button>
+                <button type="button" class="recipe-capsule" onclick="selectProbeTemplate(3, this)">Camaraderie</button>
+                <button type="button" class="recipe-capsule" onclick="selectProbeTemplate(4, this)">Hostile Control</button>
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; margin-bottom:12px; flex-wrap:wrap;">
+              <input type="text" id="whatifField" class="entry-dial" style="flex:1; min-width:260px;" value="People from [DEMOGRAPHIC] community are hardworking and honest.">
+              <button id="keyFireEquityPoke" class="key key-lead" onclick="runCounterfactualStressTest()">Run Demographic Invariance Test &rarr;</button>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:14px;">
+              <span style="font-size:11.5px; color:var(--hue-copy-minor);">Audited Identities:</span>
+              <span class="chip chip--plain">Muslim</span><span class="chip chip--plain">Hindu</span><span class="chip chip--plain">Sikh</span><span class="chip chip--plain">Christian</span><span class="chip chip--plain">Jewish</span><span class="chip chip--plain">Dalit</span><span class="chip chip--plain">Adivasi</span><span class="chip chip--plain">Brahmin</span>
+            </div>
+            <div id="pokeOutcomesFrame" style="display:none;">
+              <div id="pokeGistRibbon" style="padding:10px 14px; background:var(--slab-mellow); border:1px solid var(--fine); border-left:4px solid var(--hue-good); border-radius:var(--curve-tiny); font-size:13px; margin-bottom:12px;"></div>
+              <div class="ledger-frame" style="max-height:360px; overflow-y:auto;">
+                <table id="pokeOutcomesLedger"><thead><tr><th style="width:120px;">Demographic Group</th><th>Instantiated Sentence Evaluated</th><th style="min-width:145px;">Classification</th><th style="width:110px;">Confidence</th><th style="width:130px;">Invariance Parity</th></tr></thead><tbody></tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+              <div class="tile-name" style="margin-bottom:0;">Disaggregated Performance by Linguistic Subgroup</div>
+              <button class="key key-minor key-xs" id="keyReloadEquityProbe" onclick="gatherEquityProbe(true)">Run Full Audit</button>
+            </div>
+            <div class="ledger-frame">
+              <table id="equityBundleLedger"><thead><tr><th>Language Subgroup</th><th>Audited Samples</th><th>Accuracy</th><th>Macro F1</th><th>FPR</th><th>FNR</th><th>Equalized Odds Parity</th></tr></thead><tbody></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. EXPERIMENTS PAGE -->
+        <section id="screen-trials" class="screen-scene">
+          <h1>Trial Floor</h1>
+          <p>Empirical Validation of Core Scientific Contributions (Experiments 1&ndash;9) &bull; Cross-Disciplinary ACL Evaluation Protocols</p>
+          <div class="lattice-4" style="margin-bottom:var(--gap-4);">
+            <div class="readout-crate"><div class="readout-caption">Evaluation Suite</div><div class="readout-reading" style="font-size:20px;">9 Protocols</div></div>
+            <div class="readout-crate"><div class="readout-caption">Verified &amp; Logged</div><div class="readout-reading" id="trialConfirmedTally" style="font-size:20px;">0 / 9 Verified</div></div>
+            <div class="readout-crate"><div class="readout-caption">Primary Backbone</div><div class="readout-reading" style="font-size:16px; color:var(--hue-lead);">Multilingual Transformer</div></div>
+            <div class="readout-crate"><div class="readout-caption">Benchmark Corpus</div><div class="readout-reading" style="font-size:16px;">HASOC + Memes + XAI</div></div>
+          </div>
+
+          <div class="trial-sift-rail">
+            <div class="trial-sift-capsules">
+              <button class="recipe-capsule live" onclick="filterExperiments('all', this)">All Protocols (9)</button>
+              <button class="recipe-capsule" onclick="filterExperiments('arch', this)">Architectures (1, 4)</button>
+              <button class="recipe-capsule" onclick="filterExperiments('multi', this)">Multilingual &amp; Multimodal (2, 3)</button>
+              <button class="recipe-capsule" onclick="filterExperiments('xai', this)">XAI &amp; Rewards (5, 6, 7)</button>
+              <button class="recipe-capsule" onclick="filterExperiments('fair', this)">Fairness &amp; Context (8, 9)</button>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <button class="key key-lead key-xs" id="keyFireEveryTrial" onclick="runAllExperimentsBatch()">Run All 9 Protocols &rarr;</button>
+              <button class="key key-minor key-xs" onclick="gatherTrials()">Refresh</button>
+              <button class="key key-minor key-xs" onclick="resetExperimentsSuite()">Reset Suite (0/9)</button>
+            </div>
+          </div>
+
+          <div id="bulkTrialAdvanceFrame" style="display:none; padding:14px 18px; background:var(--slab-mellow); border:1px solid var(--fine); border-left:4px solid var(--lead); border-radius:var(--curve-xs); margin-bottom:var(--gap-4);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <div style="font-weight:600; font-size:13px;" id="bulkTrialStateCopy">Executing Benchmark Protocols 1 through 9...</div>
+              <div style="font-family:var(--face-fixed); font-size:12px; font-weight:700;" id="bulkTrialPctg">0%</div>
+            </div>
+            <div style="height:6px; background:var(--fine); border-radius:3px; overflow:hidden;">
+              <div id="bulkTrialAdvanceRail" style="width:0%; height:100%; background:var(--lead); transition:width 0.3s ease;"></div>
+            </div>
+          </div>
+
+          <div id="trialsFrame"></div>
+        </section>
+
+        <!-- 10. REPORTS & PAPER PAGE -->
+        <section id="screen-briefs" class="screen-scene">
+          <h1>Briefs &amp; Manuscript</h1>
+          <p>Official ACL Paper Draft and Presentation Deck.</p>
+          <div class="tile">
+            <div class="tile-name">ACL Research Paper Draft (LaTeX Format)</div>
+            <p style="font-size:13px;">Official ACL formatting following the core research problem statement.</p>
+            <pre id="thesisTypesetStage" style="max-height:350px; overflow-y:auto; font-size:12px;"></pre>
+          </div>
+          <div class="tile">
+            <div class="tile-name">Presentation Slide Deck</div>
+            <p style="font-size:13px;">A 15-slide comprehensive viva presentation covering Motivation, Problem Formulation, Multimodal Architecture, XAI Faithfulness, and Payoff Tuning.</p>
+            <a href="/pitch/index.html" target="_blank" class="key key-minor">Open Interactive Presentation Slides &rarr;</a>
+          </div>
+        </section>
+
+        <!-- 11. SETTINGS PAGE -->
+        <section id="screen-prefs" class="screen-scene">
+          <h1>Preferences &amp; Dials</h1>
+          <p>Centralized configuration without requiring source-code modifications.</p>
+          <div class="tile">
+            <div class="tile-name">Compute &amp; Execution Settings</div>
+            <div class="lattice-2">
+              <div class="entry-bundle"><label class="entry-caption">Compute Device</label><input type="text" id="prefSilicon" class="entry-dial" readonly></div>
+              <div class="entry-bundle"><label class="entry-caption">Batch Size</label><input type="number" id="prefBulkExtent" class="entry-dial" readonly></div>
+            </div>
+          </div>
+          <div class="tile">
+            <div class="tile-name">Multi-Objective Reward Weights</div>
+            <div class="lattice-3">
+              <div class="entry-bundle"><label class="entry-caption">&alpha; (Classification Correctness)</label><input type="number" step="0.05" id="mixA1" class="entry-dial"></div>
+              <div class="entry-bundle"><label class="entry-caption">&beta; (Explanation Quality)</label><input type="number" step="0.05" id="mixB1" class="entry-dial"></div>
+              <div class="entry-bundle"><label class="entry-caption">&gamma; (Context Appropriateness)</label><input type="number" step="0.05" id="mixG1" class="entry-dial"></div>
+              <div class="entry-bundle"><label class="entry-caption">&delta; (Human Feedback Alignment)</label><input type="number" step="0.05" id="mixD1" class="entry-dial"></div>
+              <div class="entry-bundle"><label class="entry-caption">&lambda;_err (Error Penalty)</label><input type="number" step="0.05" id="mixLambda" class="entry-dial"></div>
+            </div>
+            <button id="keyKeepPrefs" class="key key-lead" style="margin-top:12px;">Save Reward Weights</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/scripts/gateway.js?v=1.0"></script>
+  <script src="/scripts/console.js?v=1.0"></script>
+
+  <!-- Settings Gear Vertical-Table Dropdown & Scan Studio Empty-State Sync -->
+  <script>
+    (function () {
+      const gearBtn = document.getElementById('settingsGearBtn');
+      const dropdown = document.getElementById('settingsDropdownPanel');
+      const wrap = document.getElementById('settingsMenuWrap');
+
+      function setMenuOpen(isOpen) {
+        dropdown.classList.toggle('open', isOpen);
+        gearBtn.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      if (gearBtn && dropdown) {
+        gearBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          setMenuOpen(!dropdown.classList.contains('open'));
+        });
+
+        dropdown.querySelectorAll('.route-entry').forEach(function (row) {
+          row.addEventListener('click', function () {
+            setMenuOpen(false);
+          });
+        });
+
+        document.addEventListener('click', function (e) {
+          if (wrap && !wrap.contains(e.target)) setMenuOpen(false);
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') setMenuOpen(false);
+        });
+      }
+
+      // Hide idle placeholder in Scan Studio once loading or results appear
+      const emptyState = document.getElementById('scanEmptyState');
+      const watchedIds = ['scanOutcomeTile', 'scanSweeperRig', 'scanGhosting', 'scanFaultMemo'];
+      if (emptyState) {
+        const syncEmpty = function () {
+          const anyVisible = watchedIds.some(function (id) {
+            const el = document.getElementById(id);
+            return el && el.style.display !== 'none';
+          });
+          emptyState.style.display = anyVisible ? 'none' : 'block';
+        };
+        const observer = new MutationObserver(syncEmpty);
+        watchedIds.forEach(function (id) {
+          const el = document.getElementById(id);
+          if (el) observer.observe(el, { attributes: true, attributeFilter: ['style'] });
+        });
+        syncEmpty();
+      }
+    })();
+  </script>
+</body>
+</html>

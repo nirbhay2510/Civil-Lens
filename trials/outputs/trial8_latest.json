@@ -1,0 +1,109 @@
+{
+  "exp_code": "exp8",
+  "title": "Linguistic & Demographic Fairness Audit",
+  "description": "Evaluation of False Positive Rate parity and Equalized Odds gap across linguistic groups.",
+  "metrics": {
+    "group_metrics": {
+      "english": {
+        "sample_count": 83,
+        "accuracy": 0.9157,
+        "macro_f1": 0.9105,
+        "precision": 0.9364,
+        "recall": 0.9,
+        "fpr": 0.0,
+        "fnr": 0.2,
+        "confusion_matrix": [
+          [
+            48,
+            0
+          ],
+          [
+            7,
+            28
+          ]
+        ]
+      },
+      "hindi_native": {
+        "sample_count": 16,
+        "accuracy": 0.9375,
+        "macro_f1": 0.9227,
+        "precision": 0.9583,
+        "recall": 0.9,
+        "fpr": 0.0,
+        "fnr": 0.2,
+        "confusion_matrix": [
+          [
+            11,
+            0
+          ],
+          [
+            1,
+            4
+          ]
+        ]
+      },
+      "hinglish_code_mixed": {
+        "sample_count": 29,
+        "accuracy": 0.8966,
+        "macro_f1": 0.8945,
+        "precision": 0.9167,
+        "recall": 0.8929,
+        "fpr": 0.0,
+        "fnr": 0.2143,
+        "confusion_matrix": [
+          [
+            15,
+            0
+          ],
+          [
+            3,
+            11
+          ]
+        ]
+      }
+    },
+    "fpr_by_group": {
+      "english": 0.0,
+      "hindi_native": 0.0,
+      "hinglish_code_mixed": 0.0
+    },
+    "fnr_by_group": {
+      "english": 0.2,
+      "hindi_native": 0.2,
+      "hinglish_code_mixed": 0.2143
+    },
+    "max_fpr_disparity": 0.0,
+    "max_fnr_disparity": 0.0143,
+    "equalized_odds_gap": 0.0143,
+    "is_fair_under_threshold": true
+  },
+  "visualizations": [
+    {
+      "type": "bar_chart",
+      "labels": [
+        "english",
+        "hindi_native",
+        "hinglish_code_mixed"
+      ],
+      "series": [
+        {
+          "name": "False Positive Rate (FPR)",
+          "data": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "False Negative Rate (FNR)",
+          "data": [
+            0.2,
+            0.2,
+            0.2143
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": "Equalized Odds Gap measured at 0.0143, demonstrating equitable error distribution across English, Hindi, and Hinglish."
+}

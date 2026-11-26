@@ -1,0 +1,18 @@
+{
+  "name": "civil-lens",
+  "version": "1.0.0",
+  "description": "CivilLens: Transparent, Feedback-Tuned Screening of Abusive Online Language",
+  "scripts": {
+    "dev": "python server/app.py",
+    "start": "python server/app.py",
+    "test": "pytest checks/ -v"
+  },
+  "keywords": [
+    "abusive-language-screening",
+    "explainable-ai",
+    "fastapi",
+    "nlp"
+  ],
+  "author": "",
+  "license": "MIT"
+}

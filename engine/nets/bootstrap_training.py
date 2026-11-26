@@ -1,0 +1,116 @@
+import json
+from pathlib import Path
+from server.kernel.runtime_config import runtime
+from server.store.sqlite_store import open_conn
+from engine.ingest.connector import CorpusConnector
+from engine.ingest.partitioner import Partitioner
+from engine.baseline.tfidf_linear import TfidfLinearBaseline
+from engine.nets.attention_net import PolyglotAttentionEngine
+
+def fit_and_enroll_baselines():
+    conn = open_conn()
+    cursor = conn.cursor()
+
+    # Load Multilingual Datasets (HASOC + HateXplain)
+    hasoc_path = runtime.base_dir / "corpus" / "source" / "codemix_hi_en.jsonl"
+    adapter_hasoc = CorpusConnector(
+        file_path=str(hasoc_path),
+        text_column="text",
+        label_column="label",
+        language_column="language"
+    )
+    records_hasoc = adapter_hasoc.load()
+
+    hatexplain_path = runtime.base_dir / "corpus" / "source" / "rationale_benchmark.jsonl"
+    records_hx = []
+    if hatexplain_path.exists():
+        adapter_hx = CorpusConnector(
+            file_path=str(hatexplain_path),
+            text_column="post_tokens",
+            label_column="label"
+        )
+        records_hx = adapter_hx.load()
+
+    subtle_path = runtime.base_dir / "corpus" / "source" / "implicit_pattern_benchmark.jsonl"
+    records_subtle = []
+    if subtle_path.exists():
+        adapter_subtle = CorpusConnector(
+            file_path=str(subtle_path),
+            text_column="text",
+            label_column="label",
+            language_column="language"
+        )
+        records_subtle = adapter_subtle.load()
+
+    all_records = records_hasoc + records_hx + records_subtle
+    train_records, val_records, test_records = Partitioner.split(all_records, train_ratio=0.70, val_ratio=0.15, test_ratio=0.15, seed=42)
+    print(f"Combined Dataset split: {len(train_records)} train, {len(val_records)} val, {len(test_records)} test")
+
+    # 1. Train Classical Baseline
+    print("Training Classical TF-IDF + Logistic Regression Baseline...")
+    classical_clf = TfidfLinearBaseline()
+    train_res = classical_clf.train(train_records)
+    eval_res = classical_clf.evaluate(test_records)
+    print("Classical Test Evaluation:", eval_res)
+
+    cursor.execute("""
+        INSERT OR REPLACE INTO model_registry
+        (id, name, architecture, version, checkpoint_path, status, is_active, metrics)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "classical-tfidf-svm",
+        "TF-IDF + Linear Classifier Baseline",
+        "classical",
+        "1.0",
+        runtime.to_relative_path(classical_clf.checkpoint_path),
+        "ready",
+        0,
+        json.dumps(eval_res)
+    ))
+
+    # 2. Train Multilingual Transformer
+    print("Training Multilingual Code-Mixed Transformer Classifier...")
+    transformer_engine = PolyglotAttentionEngine()
+    t_train_res = transformer_engine.train(train_records, epochs=12, lr=2e-3)
+    t_eval_res = transformer_engine.evaluate(test_records)
+    print("Transformer Test Evaluation:", t_eval_res)
+
+    cursor.execute("""
+        INSERT OR REPLACE INTO model_registry
+        (id, name, architecture, version, checkpoint_path, status, is_active, metrics)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "polyglot-attention-v1",
+        "Multilingual Code-Mixed Transformer Classifier",
+        "transformer",
+        "1.0",
+        runtime.to_relative_path(transformer_engine.checkpoint_path),
+        "ready",
+        1, # Active model by default
+        json.dumps(t_eval_res)
+    ))
+
+    # Also register version 1.0 in model_versions table
+    cursor.execute("""
+        INSERT OR REPLACE INTO model_versions
+        (version_id, model_id, parent_version, optimization_method, reward_score, macro_f1, accuracy, checkpoint_path, eval_details)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        "polyglot-attention-v1.0",
+        "polyglot-attention-v1",
+        None,
+        "Supervised Baseline",
+        0.75,
+        t_eval_res["macro_f1"],
+        t_eval_res["accuracy"],
+        runtime.to_relative_path(transformer_engine.checkpoint_path),
+        json.dumps(t_eval_res)
+    ))
+
+    conn.commit()
+    conn.close()
+    print("Models trained and registered successfully.")
+
+if __name__ == "__main__":
+    fit_and_enroll_baselines()
+
