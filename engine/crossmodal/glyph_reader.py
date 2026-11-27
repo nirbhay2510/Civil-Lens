@@ -12,7 +12,7 @@ class GlyphReader:
             try:
                 import easyocr
                 # Initialize English and Hindi OCR
-                cls._reader = easyocr.Reader(["en", "hi"], gpu=False)
+                cls._reader = easyocr.Reader(["en", "hi"], gpu=True)
             except Exception as e:
                 print(f"Warning: easyocr initialization notice: {e}")
                 cls._reader = None
