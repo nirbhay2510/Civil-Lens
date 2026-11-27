@@ -16,7 +16,7 @@
 This repository hosts the official research implementation for **CivilLens: Transparent, Feedback-Tuned Screening of Abusive Online Language**, supervised by **Dr. Pradeepika Verma**.
 
 Addressing abusive language in modern digital communication requires navigating three critical failure modes of conventional NLP classifiers:
-1. **Context Blindness:** Inability to  distingu ish between direct incitement and counterspeech, educational quotation, or sarcastic reframing.
+1. **Context Blindness:** Inability to  distinguish between direct incitement and counterspeech, educational quotation, or sarcastic reframing.
 2. **Linguistic Brittleness:** Severe degradation when analyzing code-mixed vernacular (such as Hinglish) and non-Latin scripts (Devanagari Hindi) due to out-of-vocabulary collapse.
 3. **Interpretability & Optimization Gaps:** Uncalibrated post-hoc explanations and static supervised objectives that cannot adapt to nuanced human corrections.
 
