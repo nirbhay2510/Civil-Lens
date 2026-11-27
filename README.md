@@ -237,7 +237,7 @@ Civil-Lens/
 Clone the repository and install the verified dependencies in a Python 3.10+ virtual environment:
 
 ```bash
-git clone https://github.com/samanyu22/Civil-Lens.git
+git clone https://github.com/nirbhay2510/Civil-Lens.git
 cd Civil-Lens
 
 # Create and activate virtual environment
